@@ -1,0 +1,17 @@
+<h1>Submit Assignment</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Submitted Assignments</h2>
+
+<ul>
+{% for assignment in assignments %}
+    <li>{{ assignment.name }} ({{ assignment.file.url }})</li>
+{% empty %}
+    <li>No assignments submitted yet.</li>
+{% endfor %}
+</ul>
